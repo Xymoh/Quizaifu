@@ -1,10 +1,15 @@
 # Quizaifu
 Your personal 'waifu' for your education purposes
 
-## Firebase
+## Used Plugins:
+
+- ## Firebase
 Console:
 - [Konsola](https://console.firebase.google.com/u/0/project/quizaifu/overview)
 
-## Vuforia
+- ## Vuforia
 Download:
 - [Link](https://developer.vuforia.com/)
+
+- ## UniVRM
+- [Link](https://github.com/vrm-c/UniVRM)
