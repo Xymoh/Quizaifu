@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodCatching : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 50f;
 
@@ -15,7 +15,7 @@ public class FoodCatching : MonoBehaviour
 
     void Update()
     {
-        MovePlatform();
+        MovePlayer();
     }
 
     // private void MovePlatform()
@@ -36,7 +36,7 @@ public class FoodCatching : MonoBehaviour
     //     }
     // }
 
-    private void MovePlatform()
+    void MovePlayer()
     {
         float move = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
 
