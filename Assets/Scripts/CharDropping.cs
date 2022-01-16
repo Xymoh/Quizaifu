@@ -13,6 +13,7 @@ public class CharDropping : MonoBehaviour
     Rigidbody2D rb;
     Text prefabText;
     GameController gameController;
+    int fails;
 
     void Start() 
     {
@@ -75,6 +76,8 @@ public class CharDropping : MonoBehaviour
         }
         else 
         {
+            gameController.HealthIcons[fails].SetActive(false);
+            fails++;
             Debug.Log("You caught wrong word!");
         }
 

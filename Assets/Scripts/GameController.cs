@@ -13,6 +13,11 @@ public class GameController : MonoBehaviour
         set { wordToFindField = value; } 
     }
     [SerializeField] GameObject[] healthIcons;
+    public GameObject[] HealthIcons
+    {
+        get { return healthIcons; }
+        set { healthIcons = value; }
+    }
 
     float time;
     string[] wordsLocal = { "MATT", "JOANNE", "ROBERT", "MARRY JANE" };
