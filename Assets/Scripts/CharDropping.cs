@@ -16,11 +16,12 @@ public class CharDropping : MonoBehaviour
 
     void Start() 
     {
-        Debug.Log("Chosen word: " + gameController.ChosenWord);
-
         InitiateGravity();
 
         gameController = FindObjectOfType<GameController>();
+
+        Debug.Log("Chosen word: " + gameController.ChosenWord);
+
         prefabText = wordPrefab.GetComponentInChildren<Text>();
         prefabText.text = GetRandomCharA2Z().ToString();
     }
@@ -57,17 +58,17 @@ public class CharDropping : MonoBehaviour
             Debug.Log("You caught a proper word");
             
             int i = gameController.ChosenWord.IndexOf(prefabText.text);
-            while (i != -1)
+            if (i != -1)
             {
                 // Set new hidden word to everything before the i,
-                // change the i to the letter pressed, and everything after the i
+                // change the i to the letter picked up, and everything after the i
                 gameController.HiddenWord = gameController.HiddenWord.Substring(0, i) + prefabText.text + gameController.HiddenWord.Substring(i + 1);
-                Debug.Log("HiddenWord: " + gameController.HiddenWord);
+                // Debug.Log("HiddenWord: " + gameController.HiddenWord);
 
-                gameController.ChosenWord = gameController.ChosenWord.Substring(0, i) + "_" + gameController.ChosenWord.Substring(i + 1);
-                Debug.Log("ChosenWord: " + gameController.ChosenWord);
+                gameController.ChosenWord = gameController.ChosenWord.Substring(0, i) + "*" + gameController.ChosenWord.Substring(i + 1);
+                // Debug.Log("ChosenWord: " + gameController.ChosenWord);
 
-                i = gameController.ChosenWord.IndexOf(prefabText.text);
+                // i = gameController.ChosenWord.IndexOf(prefabText.text);
             }
             
             gameController.WordToFindField.text = gameController.HiddenWord;
@@ -77,11 +78,11 @@ public class CharDropping : MonoBehaviour
             Debug.Log("You caught wrong word!");
         }
 
-        // if (!gameController.HiddenWord.Contains("_"))
-        // {
+        if (!gameController.HiddenWord.Contains("_"))
+        {
         //     wintext.SetActive(true);
         //     gameEnd = true;
-        // }
+        }
     }
 
     char GetRandomCharA2Z()

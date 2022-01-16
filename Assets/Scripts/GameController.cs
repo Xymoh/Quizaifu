@@ -9,42 +9,42 @@ public class GameController : MonoBehaviour
     [SerializeField] Text wordToFindField;
     public Text WordToFindField
     {
-        get => wordToFindField;
-        set => wordToFindField = value;
+        get { return wordToFindField; } 
+        set { wordToFindField = value; } 
     }
+    [SerializeField] GameObject[] healthIcons;
 
     float time;
     string[] wordsLocal = { "MATT", "JOANNE", "ROBERT", "MARRY JANE" };
     string chosenWord;
     public string ChosenWord 
     { 
-        get => chosenWord;
-        set => chosenWord = value; 
+        get { return chosenWord; }
+        set { chosenWord = value; } 
     }
     string hiddenWord;
     public string HiddenWord 
     { 
-        get => hiddenWord; 
-        set => hiddenWord = value;
+        get { return hiddenWord; } 
+        set { hiddenWord = value; }
     }
-    int wordIndex;
-    // public int WordIndex 
-    // { 
-    //     get { return wordIndex; } 
-    //     set { wordIndex = value; }
-    // }
     CharDropping charDropping;
 
     void Awake()
     {
-        charDropping = FindObjectOfType<CharDropping>();
-        chosenWord = wordsLocal[Random.Range(0, wordsLocal.Length)];
+        InitiateGame();
         HideWord();
     }
 
     void Update()
     {
         ElapseTime();
+    }
+
+    void InitiateGame()
+    {
+        charDropping = FindObjectOfType<CharDropping>();
+        chosenWord = wordsLocal[Random.Range(0, wordsLocal.Length)];
     }
 
     void ElapseTime()
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                hiddenWord += "_ ";
+                hiddenWord += "*";
             }
         }
 
