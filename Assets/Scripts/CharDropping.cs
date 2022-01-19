@@ -5,26 +5,23 @@ using UnityEngine.UI;
 
 public class CharDropping : MonoBehaviour
 {
+    Rigidbody2D rb;
+    Text prefabText;
+    GameController gameController;
+
     [SerializeField] float startForce = 50f;
     [SerializeField] float minGravScale = 5f;
     [SerializeField] float maxGravScale = 15f;
     [SerializeField] GameObject wordPrefab;
 
-    Rigidbody2D rb;
-    Text prefabText;
-    GameController gameController;
-    int fails;
-
-    void Start() 
+    void Start()
     {
         InitiateGravity();
 
         gameController = FindObjectOfType<GameController>();
 
-        Debug.Log("Chosen word: " + gameController.ChosenWord);
-
-        prefabText = wordPrefab.GetComponentInChildren<Text>();
-        prefabText.text = GetRandomCharA2Z().ToString();
+        Debug.Log("Chosen word: " + gameController.chosenWord);
+        SetSymbol();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,7 +29,6 @@ public class CharDropping : MonoBehaviour
         if (other.tag == "Player") 
         {
             CharCollision();
-            
             
             Destroy(gameObject);
         }
@@ -50,42 +46,67 @@ public class CharDropping : MonoBehaviour
         rb.gravityScale = gravScale;
     }
 
+    void SetSymbol()
+    {
+        prefabText = wordPrefab.GetComponentInChildren<Text>();
+        prefabText.text = GetRandomCharA2Z().ToString();
+    }
+
     void CharCollision()
     {
         Debug.Log("PrefabText: " + prefabText.text);
         
-        if (gameController.ChosenWord.Contains(prefabText.text))
+        if (gameController.chosenWord.Contains(prefabText.text))
         {
             Debug.Log("You caught a proper word");
             
-            int i = gameController.ChosenWord.IndexOf(prefabText.text);
+            int i = gameController.chosenWord.IndexOf(prefabText.text);
             if (i != -1)
             {
                 // Set new hidden word to everything before the i,
                 // change the i to the letter picked up, and everything after the i
-                gameController.HiddenWord = gameController.HiddenWord.Substring(0, i) + prefabText.text + gameController.HiddenWord.Substring(i + 1);
-                // Debug.Log("HiddenWord: " + gameController.HiddenWord);
+                gameController.hiddenWord = gameController.hiddenWord.Substring(0, i) + prefabText.text + gameController.hiddenWord.Substring(i + 1);
+                // Debug.Log("hiddenWord: " + gameController.hiddenWord);
 
-                gameController.ChosenWord = gameController.ChosenWord.Substring(0, i) + "*" + gameController.ChosenWord.Substring(i + 1);
-                // Debug.Log("ChosenWord: " + gameController.ChosenWord);
-
-                // i = gameController.ChosenWord.IndexOf(prefabText.text);
+                gameController.chosenWord = gameController.chosenWord.Substring(0, i) + "*" + gameController.chosenWord.Substring(i + 1);
+                // Debug.Log("chosenWord: " + gameController.chosenWord);
             }
             
-            gameController.WordToFindField.text = gameController.HiddenWord;
+            gameController.wordToFindField.text = gameController.hiddenWord;
         }
         else 
         {
-            gameController.HealthIcons[fails].SetActive(false);
-            fails++;
+            gameController.healthIcons[gameController.fails].SetActive(false);
+            gameController.fails++;
             Debug.Log("You caught wrong word!");
+
+            if (gameController.fails > 2)
+            {
+                GameLost();
+            }
         }
 
-        if (!gameController.HiddenWord.Contains("_"))
+        if (!gameController.hiddenWord.Contains("*"))
         {
-        //     wintext.SetActive(true);
-        //     gameEnd = true;
+            GameWon();
         }
+    }
+
+    void GameLost()
+    {
+        Debug.Log("You lost the game. :(");
+        gameController.lostGame.SetActive(true);
+        PersistentManager.Instance.FoodSliderValue -= 30;
+        Time.timeScale = 0;
+    }
+
+    void GameWon()
+    {
+        gameController.foodSlider.value += 50;
+        PersistentManager.Instance.FoodSliderValue += 50;
+        Debug.Log("Gz! You won the game!");
+        gameController.wonGame.SetActive(true);
+        Time.timeScale = 0;
     }
 
     char GetRandomCharA2Z()

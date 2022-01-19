@@ -2,39 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] Text timeField;
-    [SerializeField] Text wordToFindField;
-    public Text WordToFindField
-    {
-        get { return wordToFindField; } 
-        set { wordToFindField = value; } 
-    }
-    [SerializeField] GameObject[] healthIcons;
-    public GameObject[] HealthIcons
-    {
-        get { return healthIcons; }
-        set { healthIcons = value; }
-    }
-
-    float time;
-    string[] wordsLocal = { "MATT", "JOANNE", "ROBERT", "MARRY JANE" };
-    string chosenWord;
-    public string ChosenWord 
-    { 
-        get { return chosenWord; }
-        set { chosenWord = value; } 
-    }
-    string hiddenWord;
-    public string HiddenWord 
-    { 
-        get { return hiddenWord; } 
-        set { hiddenWord = value; }
-    }
     CharDropping charDropping;
 
+    [SerializeField] Text timeField;
+    [SerializeField] string[] wordsLocal;
+    float time;
+    
+    [HideInInspector] public Text wordToFindField;
+    [HideInInspector] public string hiddenWord;
+    [HideInInspector] public string chosenWord;
+    [HideInInspector] public int fails;
+    public GameObject[] healthIcons;
+    public Slider foodSlider;
+    public GameObject wonGame;
+    public GameObject lostGame;
+    
     void Awake()
     {
         InitiateGame();
@@ -48,6 +34,7 @@ public class GameController : MonoBehaviour
 
     void InitiateGame()
     {
+        foodSlider.value = PersistentManager.Instance.FoodSliderValue;
         charDropping = FindObjectOfType<CharDropping>();
         chosenWord = wordsLocal[Random.Range(0, wordsLocal.Length)];
     }
@@ -55,7 +42,7 @@ public class GameController : MonoBehaviour
     void ElapseTime()
     {
         time += Time.deltaTime;
-        timeField.text = time.ToString();
+        timeField.text = time.ToString("N0");
     }
 
     void HideWord()
@@ -75,5 +62,11 @@ public class GameController : MonoBehaviour
         }
 
         wordToFindField.text = hiddenWord;
+    }
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
     }
 }

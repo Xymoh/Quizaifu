@@ -1,45 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 50f;
-
     Rigidbody2D rb;
+
+    [SerializeField] float movementSpeed;
+    [SerializeField] GameObject player;
+
+    bool rightPointerDown;
+    bool leftPointerDown;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        movementSpeed = movementSpeed * Time.fixedDeltaTime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        MovePlayer();
+        MoveRight();
+        MoveLeft();
     }
 
-    // private void MovePlatform()
-    // {
-    //     if (Input.touchCount > 0)
-    //     {
-    //         Touch touch = Input.GetTouch(0);
-
-    //         if (touch.phase == TouchPhase.Moved)
-    //         {
-    //             Vector2 pos = touch.position;
-    //             pos.x = (pos.x - width) / width;
-    //             pos.y = (pos.y - height) / height;
-    //             position = new Vector2(-pos.x, pos.y);
-
-    //             transform.position = position;
-    //         }
-    //     }
-    // }
-
-    void MovePlayer()
+    public void MoveCharacterRight(bool _rightPointerDown)
     {
-        float move = Input.GetAxis("Horizontal") * movementSpeed * Time.deltaTime;
+        rightPointerDown = _rightPointerDown;
+    }
 
-        transform.position = new Vector2(transform.position.x + move, transform.position.y);
+    public void MoveCharacterLeft(bool _leftPointerDown)
+    {
+        leftPointerDown = _leftPointerDown;
+    }
+
+    void MoveRight()
+    {
+        if (!rightPointerDown)
+        {
+            player.transform.Translate(Vector2.left * movementSpeed);
+        }
+    }
+
+    void MoveLeft()
+    {
+        if (!leftPointerDown)
+        {
+            player.transform.Translate(Vector2.right * movementSpeed);
+        }
     }
 }

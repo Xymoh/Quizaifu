@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CharsSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject charPrefab;
-    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] GameObject charPrefab;
+    [SerializeField] GameObject spawnPoint;
 
     [Header("Delay for char spawning")]
-    [SerializeField] private float minDelay = 2f;
-    [SerializeField] private float maxDelay = 4f;
+    [SerializeField] float minDelay = 2f;
+    [SerializeField] float maxDelay = 4f;
 
     void Start()
     {
