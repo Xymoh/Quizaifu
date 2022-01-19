@@ -96,14 +96,14 @@ public class CharDropping : MonoBehaviour
     {
         Debug.Log("You lost the game. :(");
         gameController.lostGame.SetActive(true);
-        PersistentManager.Instance.FoodSliderValue -= 30;
+        PersistentManager.foodSliderValue -= 30;
         Time.timeScale = 0;
     }
 
     void GameWon()
     {
         gameController.foodSlider.value += 50;
-        PersistentManager.Instance.FoodSliderValue += 50;
+        PersistentManager.foodSliderValue += 50;
         Debug.Log("Gz! You won the game!");
         gameController.wonGame.SetActive(true);
         Time.timeScale = 0;

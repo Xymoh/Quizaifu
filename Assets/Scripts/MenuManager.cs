@@ -16,8 +16,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Text moneyTxt;
     [SerializeField] Text levelTxt;
 
-    PersistentManager persistentManager;
-
     void Awake()
     {
         InitiateValues();
@@ -26,22 +24,22 @@ public class MenuManager : MonoBehaviour
     void InitiateValues()
     {
         // Setting Sliders
-        healthSlider.value = PersistentManager.Instance.HealthSliderValue;
-        energySlider.value = PersistentManager.Instance.EnergySliderValue;
-        foodSlider.value = PersistentManager.Instance.FoodSliderValue;
-        funSlider.value = PersistentManager.Instance.FunSliderValue;
+        healthSlider.value = PersistentManager.healthSliderValue;
+        energySlider.value = PersistentManager.energySliderValue;
+        foodSlider.value = PersistentManager.foodSliderValue;
+        funSlider.value = PersistentManager.funSliderValue;
 
         // Setting money and lvl in txt
-        moneyTxt.text = PersistentManager.Instance.MoneyTxtValue.ToString();
-        levelTxt.text = PersistentManager.Instance.LevelTXtValue.ToString();
+        moneyTxt.text = PersistentManager.moneyTxtValue.ToString();
+        levelTxt.text = PersistentManager.levelTxtValue.ToString();
     }
 
     public void LoadGame()
     {
-        if (PersistentManager.Instance.EnergySliderValue >= 15)
+        if (PersistentManager.energySliderValue >= 15)
         {
             Time.timeScale = 1;
-            PersistentManager.Instance.EnergySliderValue -= 15;
+            PersistentManager.energySliderValue -= 15;
             SceneManager.LoadScene("WordCatchGame");
         }
     }
