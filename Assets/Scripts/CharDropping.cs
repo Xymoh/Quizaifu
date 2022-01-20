@@ -66,10 +66,8 @@ public class CharDropping : MonoBehaviour
                 // Set new hidden word to everything before the i,
                 // change the i to the letter picked up, and everything after the i
                 gameController.hiddenWord = gameController.hiddenWord.Substring(0, i) + prefabText.text + gameController.hiddenWord.Substring(i + 1);
-                // Debug.Log("hiddenWord: " + gameController.hiddenWord);
 
                 gameController.chosenWord = gameController.chosenWord.Substring(0, i) + "*" + gameController.chosenWord.Substring(i + 1);
-                // Debug.Log("chosenWord: " + gameController.chosenWord);
             }
             
             gameController.wordToFindField.text = gameController.hiddenWord;
@@ -97,15 +95,26 @@ public class CharDropping : MonoBehaviour
         Debug.Log("You lost the game. :(");
         gameController.lostGame.SetActive(true);
         PersistentManager.foodSliderValue -= 30;
+
+        if (PersistentManager.foodSliderValue < 0)
+        {
+            PersistentManager.foodSliderValue = 0;
+        }
+
         Time.timeScale = 0;
     }
 
     void GameWon()
     {
-        gameController.foodSlider.value += 50;
-        PersistentManager.foodSliderValue += 50;
         Debug.Log("Gz! You won the game!");
         gameController.wonGame.SetActive(true);
+        PersistentManager.foodSliderValue += 50;
+
+        if (PersistentManager.foodSliderValue > 100)
+        {
+            PersistentManager.foodSliderValue = 100;
+        }
+
         Time.timeScale = 0;
     }
 

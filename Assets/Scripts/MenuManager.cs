@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour
         InitiateValues();
     }
 
-    void InitiateValues()
+    public void InitiateValues()
     {
         // Setting Sliders
         healthSlider.value = PersistentManager.healthSliderValue;
@@ -40,6 +40,12 @@ public class MenuManager : MonoBehaviour
         {
             Time.timeScale = 1;
             PersistentManager.energySliderValue -= 15;
+
+            if (PersistentManager.energySliderValue < 0)
+            {
+                PersistentManager.energySliderValue = 0;
+            }
+
             SceneManager.LoadScene("WordCatchGame");
         }
     }
@@ -54,5 +60,11 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void LoadHome()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("House");
     }
 }
