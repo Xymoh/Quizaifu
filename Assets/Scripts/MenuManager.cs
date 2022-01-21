@@ -24,26 +24,26 @@ public class MenuManager : MonoBehaviour
     public void InitiateValues()
     {
         // Setting Sliders
-        healthSlider.value = PersistentManager.healthSliderValue;
-        energySlider.value = PersistentManager.energySliderValue;
-        foodSlider.value = PersistentManager.foodSliderValue;
-        funSlider.value = PersistentManager.funSliderValue;
+        healthSlider.value = GlobalValues.healthSliderValue;
+        energySlider.value = GlobalValues.energySliderValue;
+        foodSlider.value = GlobalValues.foodSliderValue;
+        funSlider.value = GlobalValues.funSliderValue;
 
         // Setting money and lvl in txt
-        moneyTxt.text = PersistentManager.moneyTxtValue.ToString();
-        levelTxt.text = PersistentManager.levelTxtValue.ToString();
+        moneyTxt.text = GlobalValues.moneyTxtValue.ToString();
+        levelTxt.text = GlobalValues.levelTxtValue.ToString();
     }
 
     public void LoadGame()
     {
-        if (PersistentManager.energySliderValue >= 15)
+        if (GlobalValues.energySliderValue >= 15)
         {
             Time.timeScale = 1;
-            PersistentManager.energySliderValue -= 15;
+            GlobalValues.energySliderValue -= 15;
 
-            if (PersistentManager.energySliderValue < 0)
+            if (GlobalValues.energySliderValue < 0)
             {
-                PersistentManager.energySliderValue = 0;
+                GlobalValues.energySliderValue = 0;
             }
 
             SceneManager.LoadScene("WordCatchGame");

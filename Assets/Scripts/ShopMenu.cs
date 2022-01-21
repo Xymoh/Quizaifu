@@ -9,31 +9,40 @@ public class ShopMenu : MonoBehaviour
     [SerializeField] int foodFood;
     [SerializeField] int foodMoney;
 
+    MenuManager menuManager;
+
+    void Awake() 
+    {
+        menuManager = FindObjectOfType<MenuManager>();
+    }
+
     public void BuyFood()
     {
-        if (PersistentManager.moneyTxtValue > foodMoney)
+        if (GlobalValues.moneyTxtValue > foodMoney)
         {
-            PersistentManager.healthSliderValue += foodHealth;
-            PersistentManager.energySliderValue += foodEnergy;
-            PersistentManager.foodSliderValue += foodFood;
-            PersistentManager.moneyTxtValue -= foodMoney;
+            GlobalValues.healthSliderValue += foodHealth;
+            GlobalValues.energySliderValue += foodEnergy;
+            GlobalValues.foodSliderValue += foodFood;
+            GlobalValues.moneyTxtValue -= foodMoney;
 
-            if (PersistentManager.healthSliderValue > 100)
+            if (GlobalValues.healthSliderValue > 100)
             {
-                PersistentManager.healthSliderValue = 100;
+                GlobalValues.healthSliderValue = 100;
             }
-            if (PersistentManager.energySliderValue > 100)
+            if (GlobalValues.energySliderValue > 100)
             {
-                PersistentManager.energySliderValue = 100;
+                GlobalValues.energySliderValue = 100;
             }
-            if (PersistentManager.foodSliderValue > 100)
+            if (GlobalValues.foodSliderValue > 100)
             {
-                PersistentManager.foodSliderValue = 100;
+                GlobalValues.foodSliderValue = 100;
             }
-            if (PersistentManager.moneyTxtValue < 0)
+            if (GlobalValues.moneyTxtValue < 0)
             {
-                PersistentManager.moneyTxtValue = 0;
+                GlobalValues.moneyTxtValue = 0;
             }
         }
+
+        menuManager.InitiateValues();
     }
 }

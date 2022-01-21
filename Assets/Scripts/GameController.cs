@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
 
     void InitiateGame()
     {
-        foodSlider.value = PersistentManager.foodSliderValue;
+        foodSlider.value = GlobalValues.foodSliderValue;
         charDropping = FindObjectOfType<CharDropping>();
         chosenWord = wordsLocal[Random.Range(0, wordsLocal.Length)];
     }

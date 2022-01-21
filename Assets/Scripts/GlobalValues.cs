@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class PersistentManager
+public class GlobalValues : MonoBehaviour
 {
     public static int healthSliderValue = 100;
     public static int energySliderValue = 100;
