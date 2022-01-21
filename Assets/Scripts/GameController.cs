@@ -69,4 +69,10 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
+
+    public void ReturnToShop()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Shop");
+    }
 }
