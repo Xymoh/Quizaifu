@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &217981009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1534f9d0555909a4494a5e3fb48c65b9, type: 3}
+  m_PrefabInstance: {fileID: 2127422474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &370487859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,7 +502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e60b623978a38c14a8befe02624d1af6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1138430012186694168, guid: e60b623978a38c14a8befe02624d1af6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -655,6 +660,11 @@ Transform:
   m_Father: {fileID: 1729837453}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &622636177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e60b623978a38c14a8befe02624d1af6, type: 3}
+  m_PrefabInstance: {fileID: 445055020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &626152131
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,8 +674,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 626152132}
+  - component: {fileID: 626152133}
   m_Layer: 0
-  m_Name: Chair's
+  m_Name: Chairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -689,6 +700,28 @@ Transform:
   m_Father: {fileID: 822185547}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626152133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626152131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3783b7426aec26e4b8cd0f72c9aa678d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chairModels:
+  - {fileID: 647433231}
+  - {fileID: 217981009}
+  - {fileID: 2095773328}
+  - {fileID: 622636177}
+--- !u!1 &647433231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 77d4a26e8f3b46f41840caf365d6bace, type: 3}
+  m_PrefabInstance: {fileID: 1784885078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 926641522}
   m_Layer: 0
-  m_Name: Table's
+  m_Name: Tables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2227,8 +2260,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1421784405}
+  - component: {fileID: 1421784406}
   m_Layer: 0
-  m_Name: Sofa's
+  m_Name: Sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2252,6 +2286,18 @@ Transform:
   m_Father: {fileID: 822185547}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1421784406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421784404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a31dd6de1aea8f479478dd05b9b825c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1435607997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3181,6 +3227,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 294f2c770a09e0644b2c2819f250744e, type: 3}
   m_PrefabInstance: {fileID: 2069124660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2095773328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 77457f3a395140748b944897874ac1d0, type: 3}
+  m_PrefabInstance: {fileID: 1295257293}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2127422474
 PrefabInstance:

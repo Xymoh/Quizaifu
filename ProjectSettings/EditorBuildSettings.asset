@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/RegistrationScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Room.unity
+    guid: 788faeb89effad044aece69f4e100cc7
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: fd7c439278cbcc54f8c0b732f2145422
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WordCatchGame.unity
     guid: 85027c093dd63c147a357a9c52c58f26
   m_configObjects: {}
