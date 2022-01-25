@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneStackManager : MonoBehaviour
 {
-    private float secondsToLoadNextScene = 0.5f;
+    private float secondsToLoadNextScene = 0.1f;
     private int mainScene = 0;
     private int currentScene;
     private static int lastScene;
@@ -25,7 +25,7 @@ public class SceneStackManager : MonoBehaviour
         }
         else
         {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
         currentScene = SceneManager.GetActiveScene().buildIndex;
 
@@ -68,7 +68,7 @@ public class SceneStackManager : MonoBehaviour
         {
             if (lastScene == 0)
             {
-                Debug.Log("Main Scene");
+
                 SceneManager.LoadScene(mainScene);
             }
             else
