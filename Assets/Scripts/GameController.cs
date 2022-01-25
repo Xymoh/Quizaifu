@@ -6,20 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    CharDropping charDropping;
-
+    [Header("Text Fields")]
     [SerializeField] Text timeField;
+    [SerializeField] Text tipField;
+    [Header("Words to guess and tips")]
     [SerializeField] string[] wordsLocal;
+    [SerializeField] string[] wordTip;
+    
     float time;
+    int index;
     
     [HideInInspector] public Text wordToFindField;
     [HideInInspector] public string hiddenWord;
     [HideInInspector] public string chosenWord;
     [HideInInspector] public int fails;
     public GameObject[] healthIcons;
+    [Space(10)]
     public Slider foodSlider;
+    [Header("End game Panels")]
     public GameObject wonGame;
     public GameObject lostGame;
+
+    CharDropping charDropping;
     
     void Awake()
     {
@@ -34,9 +42,13 @@ public class GameController : MonoBehaviour
 
     void InitiateGame()
     {
+        TimeScale(0);
         foodSlider.value = GlobalValues.foodSliderValue;
         charDropping = FindObjectOfType<CharDropping>();
-        chosenWord = wordsLocal[Random.Range(0, wordsLocal.Length)];
+
+        index = Random.Range(0, wordsLocal.Length);
+        chosenWord = wordsLocal[index];
+        tipField.text = wordTip[index];
     }
 
     void ElapseTime()
@@ -66,13 +78,18 @@ public class GameController : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        Time.timeScale = 1;
+        TimeScale(1f);
         SceneManager.LoadScene("Menu");
     }
 
     public void ReturnToShop()
     {
-        Time.timeScale = 1;
+        TimeScale(1f);
         SceneManager.LoadScene("Shop");
+    }
+
+    public void TimeScale(float scale)
+    {
+        Time.timeScale = scale; 
     }
 }

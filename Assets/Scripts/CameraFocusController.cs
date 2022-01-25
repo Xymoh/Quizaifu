@@ -5,7 +5,6 @@ using Vuforia;
 
 public class CameraFocusController : MonoBehaviour
 {
-
     void Start()
     {
         VuforiaApplication.Instance.OnVuforiaStarted += OnVuforiaStarted;

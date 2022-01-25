@@ -773,6 +773,10 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.14989267
       objectReference: {fileID: 0}
+    - target: {fileID: 5749977686761801705, guid: 1402c510cf036554da34fd6424aec430, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0f2ca5b9863487c468658ce6f46351ee, type: 2}
     - target: {fileID: 6380789276982002983, guid: 1402c510cf036554da34fd6424aec430, type: 3}
       propertyPath: m_DirtyAABB
       value: 0

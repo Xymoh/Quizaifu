@@ -7,18 +7,30 @@ using UnityEngine.EventSystems;
 
 public class CharacterMovement : MonoBehaviour
 {
-    Rigidbody2D rb;
-
     [SerializeField] float movementSpeed;
     [SerializeField] GameObject player;
+    [SerializeField] Transform character;
 
     bool rightPointerDown;
     bool leftPointerDown;
+    float panelWidth;
+
+    RectTransform parentCanvas;
+    Rigidbody2D rb;
+    Animator anim;
 
     void Start()
     {
+        InitiateValues();
+    }
+
+    void InitiateValues()
+    {
         rb = GetComponent<Rigidbody2D>();
         movementSpeed = movementSpeed * Time.fixedDeltaTime;
+        parentCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+        panelWidth = parentCanvas.rect.width;
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -51,5 +63,10 @@ public class CharacterMovement : MonoBehaviour
         {
             player.transform.Translate(Vector2.right * movementSpeed);
         }
+    }
+
+    public void PlayWaifuAnimation(string animation)
+    {
+        anim.Play(animation);
     }
 }

@@ -5,20 +5,22 @@ using UnityEngine.UI;
 
 public class CharDropping : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Text prefabText;
-    GameController gameController;
-
     [SerializeField] float startForce = 50f;
     [SerializeField] float minGravScale = 5f;
     [SerializeField] float maxGravScale = 15f;
     [SerializeField] GameObject wordPrefab;
+
+    Rigidbody2D rb;
+    Text prefabText;
+    GameController gameController;
+    CharacterMovement characterMovement;
 
     void Start()
     {
         InitiateGravity();
 
         gameController = FindObjectOfType<GameController>();
+        characterMovement = FindObjectOfType<CharacterMovement>();
 
         Debug.Log("Chosen word: " + gameController.chosenWord);
         SetSymbol();
@@ -71,6 +73,8 @@ public class CharDropping : MonoBehaviour
             }
             
             gameController.wordToFindField.text = gameController.hiddenWord;
+
+            characterMovement.PlayWaifuAnimation("HappyJump_Anim");
         }
         else 
         {
