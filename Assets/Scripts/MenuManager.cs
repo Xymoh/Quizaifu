@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+   
+   
     [Header("Value Sliders")]
     [SerializeField] Slider healthSlider;
     [SerializeField] Slider energySlider;
@@ -15,9 +17,11 @@ public class MenuManager : MonoBehaviour
     [Header("Text Values")]
     [SerializeField] Text moneyTxt;
     [SerializeField] Text levelTxt;
+    private GameObject SceneSaveManager;
 
     void Awake()
     {
+        SceneSaveManager = GameObject.Find("SaveManager");
         InitiateValues();
     }
 
@@ -50,10 +54,29 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void LoadLevel( GameObject _go, int _sceneNumber)
+    {
+        _go.GetComponent<SceneStackManager>().LoadNextScene(_sceneNumber);
+
+    }
+
+
+    public void LoadLastScene()
+    {
+        Time.timeScale = 1;
+        SceneSaveManager.GetComponent<SceneStackManager>().LoadLastScene();
+
+    }
     public void LoadShop()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Shop");
+        LoadLevel(SceneSaveManager, 2);
+    }
+
+    public void LoadFurnitureMenu()
+    {
+        Time.timeScale = 1;
+        LoadLevel(SceneSaveManager, 3);
     }
 
     public void LoadMain()
