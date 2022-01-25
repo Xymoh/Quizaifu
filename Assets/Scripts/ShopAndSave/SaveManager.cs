@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager instance { get; private set; }
 
 
-
+    MenuManager menuManager;
 
     //Things that are saved
     public int currentChair;
@@ -17,14 +17,21 @@ public class SaveManager : MonoBehaviour
 
 
     // Start is called before the first frame update
+
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
             Destroy(gameObject);
         else
             instance = this;
+           
+     
         DontDestroyOnLoad(gameObject);
         Load();
+        menuManager = FindObjectOfType<MenuManager>();
+        menuManager.InitiateValues();
     }
 
  

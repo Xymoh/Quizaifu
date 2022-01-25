@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     
     void Awake()
     {
+        SceneSaveManager = GameObject.Find("SaveManager");
         InitiateGame();
         HideWord();
     }
@@ -76,16 +77,30 @@ public class GameController : MonoBehaviour
         wordToFindField.text = hiddenWord;
     }
 
+
+
+    //things to navigate between scenes
+    
+
+  
+       
+    
+    private GameObject SceneSaveManager;
+    public void LoadLevel(GameObject _go, int _sceneNumber)
+    {
+        _go.GetComponent<SceneStackManager>().LoadNextScene(_sceneNumber);
+
+    }
     public void ReturnToMenu()
     {
         TimeScale(1f);
-        SceneManager.LoadScene("Menu");
+        LoadLevel(SceneSaveManager, 0);
     }
 
     public void ReturnToShop()
     {
         TimeScale(1f);
-        SceneManager.LoadScene("Shop");
+        LoadLevel(SceneSaveManager, 2);
     }
 
     public void TimeScale(float scale)
