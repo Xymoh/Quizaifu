@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemSelector : MonoBehaviour
 {
 
-
+    MenuManager menuManager;
     private int[] furniture = new int[4];
     [SerializeField] private GameObject[] selectedIcons;
     [SerializeField] private GameObject[] buyIcons;
@@ -17,6 +17,7 @@ public class ItemSelector : MonoBehaviour
     {
         //code for chairs
         currentChair = SaveManager.instance.currentChair;
+        menuManager = FindObjectOfType<MenuManager>();
         changeActiveButtons(currentChair);
         checkUnlockedChairs();
     }
@@ -36,6 +37,7 @@ public class ItemSelector : MonoBehaviour
             }
         }
         SaveManager.instance.Save();
+        menuManager.InitiateValues();
     }
 
     void changeActiveButtons(int _previousChair)

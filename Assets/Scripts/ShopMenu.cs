@@ -43,6 +43,7 @@ public class ShopMenu : MonoBehaviour
             }
         }
 
+        SaveManager.instance.Save();
         menuManager.InitiateValues();
     }
 }

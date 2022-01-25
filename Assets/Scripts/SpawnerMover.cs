@@ -9,8 +9,13 @@ public class SpawnerMover : MonoBehaviour
     float movementFactor;
     [SerializeField] float period = 2f;
 
+    Canvas canvas;
+    float cWidth;
+
     void Start()
     {
+        canvas = FindObjectOfType<Canvas>();
+        cWidth = canvas.GetComponent<RectTransform>().rect.width;
         startingPos = transform.position;
     }
 

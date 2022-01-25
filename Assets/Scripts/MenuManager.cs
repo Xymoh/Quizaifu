@@ -50,7 +50,7 @@ public class MenuManager : MonoBehaviour
                 GlobalValues.energySliderValue = 0;
             }
 
-            SceneManager.LoadScene("WordCatchGame");
+            LoadLevel(SceneSaveManager, 5);
         }
     }
 
@@ -82,12 +82,18 @@ public class MenuManager : MonoBehaviour
     public void LoadMain()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Menu");
+        LoadLevel(SceneSaveManager, 0);
     }
 
     public void LoadHome()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("House");
+        LoadLevel(SceneSaveManager, 1);
+    }
+
+    public void LoadFoodMenu()
+    {
+        Time.timeScale = 1;
+        LoadLevel(SceneSaveManager, 6);
     }
 }
