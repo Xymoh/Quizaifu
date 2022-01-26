@@ -932,10 +932,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 607333658}
     m_Modifications:
+    - target: {fileID: 1405574132623325201, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1405574132623325202, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 607333657}
+    - target: {fileID: 1405574132623325202, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1405574132623325214, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -974,6 +982,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1405574132623325215, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405574132623325215, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405574132623325215, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405574132623325215, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1405574132623325215, guid: b5a57df926d759e4b8d0a5cd535242db, type: 3}
