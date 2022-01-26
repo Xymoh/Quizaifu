@@ -3714,7 +3714,7 @@ MonoBehaviour:
   charPrefab: {fileID: 9144267141485574781, guid: c13b14754dca5b243b1134fc1f86f210, type: 3}
   spawnPoint: {fileID: 91999350}
   minDelay: 1
-  maxDelay: 3
+  maxDelay: 2
 --- !u!4 &2036500224
 Transform:
   m_ObjectHideFlags: 0
